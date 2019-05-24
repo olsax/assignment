@@ -1,6 +1,7 @@
 # assignment
 
-Tasks for AIPS recruitment
+Tasks 1, 2, 3, 4, 5, 6 for AIPS recruitment
+
 
 ### Language
 Python 3.x
