@@ -10,6 +10,7 @@ def load_files():
 
 	return (classf, testf, test_lvlf)
 
+
 ####task2 - check if files are correct according to the data in the columns
 # removed NaN numbers from the three tables
 def check_correctness(file0, file1, file2):
@@ -19,6 +20,7 @@ def check_correctness(file0, file1, file2):
 	test_lvlf = file2.dropna().reset_index(drop=True)
 
 	return (classf, testf, test_lvlf)
+
 
 ####task3 - dataset containing info about frequency of tests utilization
 def get_test_utilization(class_file, test_file):
@@ -37,8 +39,6 @@ def get_test_utilization(class_file, test_file):
 
 	return(class_com, test_ut)
 
-
-##current_val = test_ut['class_id'][0]
 
 def get_numoftests(test_ut, current_val):
 
@@ -63,7 +63,6 @@ def get_numoftests(test_ut, current_val):
 	return (test_ut, test_number_list)
 
 
-
 ####task4 - dataset containing info about average overall scores for tests in classes.
 def get_test_avg(class_file, test_file):
 
@@ -78,6 +77,7 @@ def get_test_avg(class_file, test_file):
 	test_avg = test_avg[test_avg.test_status == 'SCORING_SCORED']
 
 	return test_avg
+
 
 #getting the average score in each of the classes
 def get_avg_scores(test_avg):
@@ -108,6 +108,7 @@ def get_avg_scores(test_avg):
 
 	return test_avg_list
 
+
 def save_test_avg(test_avg, test_avg_list):	
 
 	test_avg = test_avg.drop_duplicates(['class_id'], keep='first')
@@ -128,20 +129,14 @@ def save_test_avg(test_avg, test_avg_list):
 
 def main():
 
-	files = load_files()
-	classf = files[0]
-	testf = files[1]
-	test_lvlf = files[2]
-	
-	correct_files = check_correctness(classf, testf, test_lvlf)
-	classf = correct_files[0]
-	testf = correct_files[1]
-	test_lvlf = correct_files[2]
-	
+	classf, testf, test_lvlf = load_files()
+
+	classf, testf, test_lvlf = check_correctness(classf, testf, test_lvlf)
+
 	test_utilization = get_test_utilization(classf, testf)
 	test_ut = test_utilization[1]
-	current_val = test_ut['class_id'][0]
 
+	current_val = test_ut['class_id'][0]
 	test_ut, test_number_list = get_numoftests(test_ut, current_val)
 
 	#joining the data from csv files with created test_number_list
@@ -150,15 +145,10 @@ def main():
 	test_ut.to_csv('test_utilization.csv', sep=',', encoding='utf-8')
 
 	test_avg = get_test_avg(classf, testf)
-	#print(test_avg)
-
-	#current_val = test_avg['class_id'][0]
-	#current_val = test_avg['class_id']
-	#current_val = test_avg
 	test_avg_list = get_avg_scores(test_avg)
 	save_test_avg(test_avg, test_avg_list)
 
 
 if __name__== "__main__":
-    
+	
 	main()
