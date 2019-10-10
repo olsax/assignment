@@ -17,7 +17,7 @@ pip install pandas
 pip install numpy
 ```
 
-### Clone
+### Cloning
 - Clone this repo to your local machine using https://github.com/olsax/assignment.git
 
 ### Running the code
