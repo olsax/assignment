@@ -1,6 +1,6 @@
 # assignment
 
-Tasks 1, 2, 3, 4, 5, 6 for AIPS recruitment
+Tasks 1, 2, 3, 4, 5, 6 with class and test datasets
 
 
 ### Language
